@@ -1,6 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# ENS Dapp README
+
+## Table of Contents
+1. [Overview](#overview)
+2. [Dependencies](#dependencies)
+3. [Components](#components)
+    - [Home Component](#home-component)
+4. [Configuration](#configuration)
+5. [Libraries Used](#libraries-used)
+
+
+## 1. Overview
 
 First, run the development server:
 
@@ -16,21 +26,43 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The ENS Dapp is a web application designed for users to connect their Ethereum wallets, retrieve their Ethereum Name Service (ENS) names if available, and interact with NFTs, particularly the **dennyswamb Punks** collection. The application is built on the Sepolia testnet and leverages RainbowKit for easy wallet connection and Wagmi for Ethereum-related functionalities.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 2. Dependencies
+The dapp utilizes various libraries to provide seamless integration with Ethereum and optimize performance. Key dependencies include:
 
-## Learn More
+- **React**: A core library for building user interfaces.
+- **RainbowKit**: A wallet connector library that supports multiple wallets such as MetaMask, Ledger, and Trust Wallet.
+- **Wagmi**: A library that simplifies Ethereum wallet connection and ENS integration.
+- **TanStack Query**: For data fetching, caching, and query management.
+- **Next.js**: A framework for server-side rendering in React applications.
+- **Next/Image**: For image optimization, enhancing the loading speed and performance of images.
 
-To learn more about Next.js, take a look at the following resources:
+## 3. Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Home Component
+The `Home` component serves as the main entry point for users interacting with the ENS Dapp.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Features:
+- **Wallet Connection**: It uses the `useAccount` hook from Wagmi to check if the user's wallet is connected. If connected, it displays a welcome message along with the user's wallet address or their ENS name.
+- **ENS Integration**: The dapp attempts to resolve the user's Ethereum address to an ENS name using the `useEnsName` hook from Wagmi.
+- **Dynamic Rendering**: It dynamically displays either the wallet connection status or a "Connect Wallet" button using the RainbowKit `ConnectButton` component.
+- **NFT Display**: A display image of the **dennyswamb Punks** NFT collection is presented using the `Next/Image` component for optimized rendering.
 
-## Deploy on Vercel
+## 4. Configuration
+To configure the ENS Dapp, ensure that the following environment variables and dependencies are properly set up:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Network**: The application runs on the Sepolia testnet. Make sure your wallet is configured to interact with the Sepolia network.
+2. **Wallet Integration**: Use RainbowKit to integrate wallet connectors (MetaMask, Ledger, etc.) for smooth wallet connection experiences.
+3. **ENS Support**: Wagmi is configured to resolve ENS names associated with Ethereum addresses.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 5. Libraries Used
+The ENS Dapp makes use of the following libraries:
+- **React**: Core library for building UI components.
+- **RainbowKit**: Wallet connection tool supporting multiple wallets.
+- **Wagmi**: For handling Ethereum wallet connections and ENS integrations.
+- **TanStack Query**: For managing data fetching and caching logic.
+- **Next.js**: To provide server-side rendering and efficient routing.
+- **Next/Image**: For optimizing images in the application.
+
+This documentation provides a general overview and essential technical details of the ENS Dapp. Make sure to configure the dapp correctly and install all necessary dependencies for it to run smoothly.
